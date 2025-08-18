@@ -1,0 +1,56 @@
+[
+  {
+    "brand": "MAC Cosmetics",
+    "code": "MACSMS15",
+    "description": "$15 off",
+    "button_index": 0
+  },
+  {
+    "brand": "IL MAKIAGE",
+    "code": "PRT30-15",
+    "description": "$15 off",
+    "button_index": 1
+  },
+  {
+    "brand": "Charlotte Tilbury",
+    "code": "KEITHYKINFA50E",
+    "description": "15% off",
+    "button_index": 2
+  },
+  {
+    "brand": "Elf Cosmetics",
+    "code": "BRONZYBFFS",
+    "description": "$22 off",
+    "button_index": 3
+  },
+  {
+    "brand": "bareMinerals",
+    "code": "GRBDAY",
+    "description": "$25 off",
+    "button_index": 4
+  },
+  {
+    "brand": "IT Cosmetics",
+    "code": "COMEBACK2IT",
+    "description": "10% off",
+    "button_index": 5
+  },
+  {
+    "brand": "Jones Road Beauty",
+    "code": "CINDY15",
+    "description": "15% off",
+    "button_index": 6
+  },
+  {
+    "brand": "Thrive Causemetics",
+    "code": "EMPLOYEEDISCOUNT",
+    "description": "40% off",
+    "button_index": 7
+  },
+  {
+    "brand": "Rare Beauty",
+    "code": "GA15",
+    "description": "15% off",
+    "button_index": 8
+  }
+]

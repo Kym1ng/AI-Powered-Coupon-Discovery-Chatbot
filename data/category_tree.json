@@ -1,0 +1,97 @@
+{
+  "artificial-intelligence": {
+    "category_name": "Artificial Intelligence",
+    "category_path": "/category/artificial-intelligence",
+    "subcategories": {}
+  },
+  "automotive": {
+    "category_name": "Automotive",
+    "category_path": "/category/automotive",
+    "subcategories": {}
+  },
+  "beauty": {
+    "category_name": "Beauty",
+    "category_path": "/category/beauty",
+    "subcategories": {}
+  },
+  "business": {
+    "category_name": "Business",
+    "category_path": "/category/business",
+    "subcategories": {}
+  },
+  "career-learning": {
+    "category_name": "Career Learning",
+    "category_path": "/category/career-learning",
+    "subcategories": {}
+  },
+  "devices": {
+    "category_name": "Devices",
+    "category_path": "/category/devices",
+    "subcategories": {}
+  },
+  "online": {
+    "category_name": "Online",
+    "category_path": "/category/online",
+    "subcategories": {}
+  },
+  "fashion": {
+    "category_name": "Fashion",
+    "category_path": "/category/fashion",
+    "subcategories": {}
+  },
+  "food-restaurants": {
+    "category_name": "Food Restaurants",
+    "category_path": "/category/food-restaurants",
+    "subcategories": {}
+  },
+  "health": {
+    "category_name": "Health",
+    "category_path": "/category/health",
+    "subcategories": {}
+  },
+  "hobbies-toys": {
+    "category_name": "Hobbies Toys",
+    "category_path": "/category/hobbies-toys",
+    "subcategories": {}
+  },
+  "home-garden": {
+    "category_name": "Home Garden",
+    "category_path": "/category/home-garden",
+    "subcategories": {}
+  },
+  "money": {
+    "category_name": "Money",
+    "category_path": "/category/money",
+    "subcategories": {}
+  },
+  "pets": {
+    "category_name": "Pets",
+    "category_path": "/category/pets",
+    "subcategories": {}
+  },
+  "shopping-related-services": {
+    "category_name": "Shopping Related Services",
+    "category_path": "/category/shopping-related-services",
+    "subcategories": {}
+  },
+  "software": {
+    "category_name": "Software",
+    "category_path": "/category/software",
+    "subcategories": {}
+  },
+  "sports-outdoors": {
+    "category_name": "Sports Outdoors",
+    "category_path": "/category/sports-outdoors",
+    "subcategories": {}
+  },
+  "places": {
+    "category_name": "Places",
+    "category_path": "/category/places",
+    "subcategories": {}
+  },
+  "blockchain-web3": {
+    "category_name": "Blockchain Web3",
+    "category_path": "/category/blockchain-web3",
+    "subcategories": {}
+  }
+}

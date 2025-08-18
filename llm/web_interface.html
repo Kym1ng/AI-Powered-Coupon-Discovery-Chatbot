@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coupon Search Bot - Basic Mode (Free)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .chat-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chat-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .chat-header h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .chat-header p {
+            opacity: 0.9;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .mode-toggle {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .mode-btn {
+            padding: 8px 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .mode-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .mode-btn.active {
+            background: rgba(255, 255, 255, 0.9);
+            color: #667eea;
+            border-color: white;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background: #f8f9fa;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .message.user {
+            justify-content: flex-end;
+        }
+
+        .message-content {
+            max-width: 70%;
+            padding: 12px 16px;
+            border-radius: 18px;
+            word-wrap: break-word;
+        }
+
+        .message.user .message-content {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .message.bot .message-content {
+            background: white;
+            color: #333;
+            border: 1px solid #e0e0e0;
+        }
+
+        .message.bot .message-content.error {
+            background: #ffe6e6;
+            color: #d32f2f;
+            border-color: #ffcdd2;
+        }
+
+        .coupon-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 15px;
+            margin: 10px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .coupon-card h4 {
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+
+        .coupon-code {
+            background: #f0f8ff;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-family: monospace;
+            font-weight: bold;
+            color: #667eea;
+            display: inline-block;
+            margin: 5px 0;
+        }
+
+        .chat-input {
+            padding: 20px;
+            background: white;
+            border-top: 1px solid #e0e0e0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 25px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .chat-input input:focus {
+            border-color: #667eea;
+        }
+
+        .chat-input button {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+
+        .chat-input button:hover {
+            transform: translateY(-2px);
+        }
+
+        .chat-input button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .stats {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 12px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .stats h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .stat-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h1>🎫 Coupon Search Bot</h1>
+            <p>Search 1,239+ brands and categories!</p>
+            <div class="mode-toggle">
+                <button id="basicModeBtn" class="mode-btn active" onclick="switchMode('basic')">
+                    🔍 Basic Search (Free)
+                </button>
+                <button id="aiModeBtn" class="mode-btn" onclick="switchMode('ai')">
+                    🤖 AI Chat (OpenAI)
+                </button>
+            </div>
+        </div>
+        
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot" id="welcomeMessage">
+                <div class="message-content">
+                    👋 Hi! I'm your coupon assistant. I can help you find the best deals and coupons from SimplyCodes.com.
+                    <br><br>
+                    <strong>🎯 Current Mode: Basic Search (Free)</strong>
+                    <br>• Search by brand names: "Taplio", "DoorDash", "MAC Cosmetics"
+                    <br>• Search by categories: "beauty", "AI", "food", "health"
+                    <br>• Search by keywords: "50% off", "welcome", "new"
+                    <br>• Get statistics: "statistics"
+                    <br><br>
+                    <em>💡 Try searching for: "beauty", "Taplio", "statistics"</em>
+                </div>
+            </div>
+        </div>
+        
+        <div class="chat-input">
+            <input type="text" id="messageInput" placeholder="Type your message here..." onkeypress="handleKeyPress(event)">
+            <button id="sendButton" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE_URL = 'http://localhost:8000';
+        const chatMessages = document.getElementById('chatMessages');
+        const messageInput = document.getElementById('messageInput');
+        const sendButton = document.getElementById('sendButton');
+        
+        // Mode tracking
+        let currentMode = 'basic'; // 'basic' or 'ai'
+        
+        function switchMode(mode) {
+            currentMode = mode;
+            
+            // Update button styles
+            document.getElementById('basicModeBtn').classList.toggle('active', mode === 'basic');
+            document.getElementById('aiModeBtn').classList.toggle('active', mode === 'ai');
+            
+            // Update input placeholder
+            messageInput.placeholder = mode === 'basic' 
+                ? 'Type brand names, categories, or keywords...' 
+                : 'Ask me anything about coupons...';
+            
+            // Update welcome message
+            const welcomeMessage = document.getElementById('welcomeMessage');
+            if (mode === 'basic') {
+                welcomeMessage.querySelector('.message-content').innerHTML = `
+                    👋 Hi! I'm your coupon assistant. I can help you find the best deals and coupons from SimplyCodes.com.
+                    <br><br>
+                    <strong>🎯 Current Mode: Basic Search (Free)</strong>
+                    <br>• Search by brand names: "Taplio", "DoorDash", "MAC Cosmetics"
+                    <br>• Search by categories: "beauty", "AI", "food", "health"
+                    <br>• Search by keywords: "50% off", "welcome", "new"
+                    <br>• Get statistics: "statistics"
+                    <br><br>
+                    <em>💡 Try searching for: "beauty", "Taplio", "statistics"</em>
+                `;
+            } else {
+                welcomeMessage.querySelector('.message-content').innerHTML = `
+                    👋 Hi! I'm your AI coupon assistant. I can help you find the best deals and coupons from SimplyCodes.com.
+                    <br><br>
+                    <strong>🤖 Current Mode: AI Chat (Requires OpenAI API)</strong>
+                    <br>• Natural language: "What's the best discount for Taplio?"
+                    <br>• Complex questions: "Show me beauty coupons under $20"
+                    <br>• Conversational: "I need help finding food delivery deals"
+                    <br>• Smart recommendations: "What are the top deals today?"
+                    <br><br>
+                    <em>⚠️ Note: This mode requires a valid OpenAI API key with credits</em>
+                `;
+            }
+        }
+
+        function addMessage(content, isUser = false, isError = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isUser ? 'user' : 'bot'}`;
+            
+            const contentDiv = document.createElement('div');
+            contentDiv.className = `message-content ${isError ? 'error' : ''}`;
+            contentDiv.innerHTML = content;
+            
+            messageDiv.appendChild(contentDiv);
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function formatCouponResponse(response) {
+            let html = response.answer;
+            
+            // Add source documents if available
+            if (response.source_documents && response.source_documents.length > 0) {
+                html += '<br><br><strong>Sources:</strong><br>';
+                response.source_documents.forEach((doc, index) => {
+                    html += `<div class="coupon-card">
+                        <h4>Source ${index + 1}</h4>
+                        <p>${doc.content}</p>
+                    </div>`;
+                });
+            }
+            
+            return html;
+        }
+
+        function formatStatsResponse(stats) {
+            return `<div class="stats">
+                <h4>📊 Coupon Statistics</h4>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">${stats.total_coupons}</div>
+                        <div class="stat-label">Total Coupons</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">${stats.total_categories}</div>
+                        <div class="stat-label">Categories</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">${stats.total_subcategories}</div>
+                        <div class="stat-label">Subcategories</div>
+                    </div>
+                </div>
+            </div>`;
+        }
+
+        async function sendMessage() {
+            const message = messageInput.value.trim();
+            if (!message) return;
+
+            // Add user message
+            addMessage(message, true);
+            messageInput.value = '';
+            
+            // Disable input while processing
+            messageInput.disabled = true;
+            sendButton.disabled = true;
+            sendButton.innerHTML = '<div class="loading"></div>';
+
+            try {
+                let response;
+                
+                // Check if it's a stats request
+                if (message.toLowerCase().includes('statistics') || message.toLowerCase().includes('stats')) {
+                    response = await fetch(`${API_BASE_URL}/stats`);
+                    const stats = await response.json();
+                    addMessage(formatStatsResponse(stats));
+                } else {
+                    // Handle based on current mode
+                    if (currentMode === 'basic') {
+                        // Basic search mode
+                        response = await fetch(`${API_BASE_URL}/search`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({ query: message })
+                        });
+                        
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+                        
+                        const data = await response.json();
+                        if (data.coupons && data.coupons.length > 0) {
+                            let resultHtml = `Found ${data.total} coupons for "${message}":<br><br>`;
+                            data.coupons.slice(0, 5).forEach((coupon, index) => {
+                                resultHtml += `<div class="coupon-card">
+                                    <h4>${coupon.brand}</h4>
+                                    <div class="coupon-code">Code: ${coupon.code}</div>
+                                    <p>${coupon.description}</p>
+                                    <small>Category: ${coupon.category} > ${coupon.subcategory}</small>
+                                </div>`;
+                            });
+                            if (data.total > 5) {
+                                resultHtml += `<br><em>... and ${data.total - 5} more coupons</em>`;
+                            }
+                            addMessage(resultHtml);
+                        } else {
+                            addMessage(`No coupons found for "${message}". Try searching for categories like "beauty", "AI", "business", or specific brands.`);
+                        }
+                    } else {
+                        // AI chat mode
+                        response = await fetch(`${API_BASE_URL}/chat`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({ message: message })
+                        });
+                        
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+                        
+                        const data = await response.json();
+                        addMessage(formatCouponResponse(data));
+                    }
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                addMessage(`❌ Error: ${error.message}. Make sure the API server is running on ${API_BASE_URL}`, false, true);
+            } finally {
+                // Re-enable input
+                messageInput.disabled = false;
+                sendButton.disabled = false;
+                sendButton.innerHTML = 'Send';
+                messageInput.focus();
+            }
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        // Focus on input when page loads
+        messageInput.focus();
+    </script>
+</body>
+</html>

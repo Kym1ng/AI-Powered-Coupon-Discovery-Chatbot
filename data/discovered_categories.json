@@ -1,0 +1,914 @@
+[
+  {
+    "title": "AI Content Creation",
+    "url": "https://simplycodes.com/category/artificial-intelligence/ai-content-creation",
+    "category_path": "/category/artificial-intelligence/ai-content-creation",
+    "level": 2
+  },
+  {
+    "title": "Business AI Tools",
+    "url": "https://simplycodes.com/category/artificial-intelligence/business-ai-tools",
+    "category_path": "/category/artificial-intelligence/business-ai-tools",
+    "level": 2
+  },
+  {
+    "title": "Conversational Intelligence Software",
+    "url": "https://simplycodes.com/category/artificial-intelligence/conversational-ai",
+    "category_path": "/category/artificial-intelligence/conversational-ai",
+    "level": 2
+  },
+  {
+    "title": "Creative AI Tools",
+    "url": "https://simplycodes.com/category/artificial-intelligence/creative-ai-tools",
+    "category_path": "/category/artificial-intelligence/creative-ai-tools",
+    "level": 2
+  },
+  {
+    "title": "Leisure AI Tools",
+    "url": "https://simplycodes.com/category/artificial-intelligence/leisure-ai-tools",
+    "category_path": "/category/artificial-intelligence/leisure-ai-tools",
+    "level": 2
+  },
+  {
+    "title": "Auto Dealers",
+    "url": "https://simplycodes.com/category/automotive/auto-dealers",
+    "category_path": "/category/automotive/auto-dealers",
+    "level": 2
+  },
+  {
+    "title": "Auto Exterior Accessories",
+    "url": "https://simplycodes.com/category/automotive/auto-exterior-accessories",
+    "category_path": "/category/automotive/auto-exterior-accessories",
+    "level": 2
+  },
+  {
+    "title": "Auto Interior Accessories",
+    "url": "https://simplycodes.com/category/automotive/auto-interior-accessories",
+    "category_path": "/category/automotive/auto-interior-accessories",
+    "level": 2
+  },
+  {
+    "title": "Auto Performance Parts & Accessories",
+    "url": "https://simplycodes.com/category/automotive/auto-performance-parts-accessories",
+    "category_path": "/category/automotive/auto-performance-parts-accessories",
+    "level": 2
+  },
+  {
+    "title": "Auto Replacement Parts",
+    "url": "https://simplycodes.com/category/automotive/auto-replacement-parts",
+    "category_path": "/category/automotive/auto-replacement-parts",
+    "level": 2
+  },
+  {
+    "title": "Auto Resources & Services",
+    "url": "https://simplycodes.com/category/automotive/auto-resources-services",
+    "category_path": "/category/automotive/auto-resources-services",
+    "level": 2
+  },
+  {
+    "title": "Auto Tools & Equipment",
+    "url": "https://simplycodes.com/category/automotive/auto-tools-equipment",
+    "category_path": "/category/automotive/auto-tools-equipment",
+    "level": 2
+  },
+  {
+    "title": "Car Care",
+    "url": "https://simplycodes.com/category/automotive/car-care",
+    "category_path": "/category/automotive/car-care",
+    "level": 2
+  },
+  {
+    "title": "Motorcycles & Powersports",
+    "url": "https://simplycodes.com/category/automotive/motorcycles-powersports",
+    "category_path": "/category/automotive/motorcycles-powersports",
+    "level": 2
+  },
+  {
+    "title": "Tires & Wheels",
+    "url": "https://simplycodes.com/category/automotive/tires-wheels",
+    "category_path": "/category/automotive/tires-wheels",
+    "level": 2
+  },
+  {
+    "title": "Truck Parts & Accessories",
+    "url": "https://simplycodes.com/category/automotive/truck-parts-accessories",
+    "category_path": "/category/automotive/truck-parts-accessories",
+    "level": 2
+  },
+  {
+    "title": "Fragrances",
+    "url": "https://simplycodes.com/category/beauty/fragrances",
+    "category_path": "/category/beauty/fragrances",
+    "level": 2
+  },
+  {
+    "title": "Hair Care",
+    "url": "https://simplycodes.com/category/beauty/hair-care",
+    "category_path": "/category/beauty/hair-care",
+    "level": 2
+  },
+  {
+    "title": "Makeup",
+    "url": "https://simplycodes.com/category/beauty/makeup",
+    "category_path": "/category/beauty/makeup",
+    "level": 2
+  },
+  {
+    "title": "Nail Care",
+    "url": "https://simplycodes.com/category/beauty/nail-care",
+    "category_path": "/category/beauty/nail-care",
+    "level": 2
+  },
+  {
+    "title": "Shaving & Hair Removal",
+    "url": "https://simplycodes.com/category/beauty/shaving-hair-removal",
+    "category_path": "/category/beauty/shaving-hair-removal",
+    "level": 2
+  },
+  {
+    "title": "Skin Care",
+    "url": "https://simplycodes.com/category/beauty/skin-care",
+    "category_path": "/category/beauty/skin-care",
+    "level": 2
+  },
+  {
+    "title": "Administrative Services",
+    "url": "https://simplycodes.com/category/business/administrative-services",
+    "category_path": "/category/business/administrative-services",
+    "level": 2
+  },
+  {
+    "title": "Construction Supply",
+    "url": "https://simplycodes.com/category/business/construction-supplies-services",
+    "category_path": "/category/business/construction-supplies-services",
+    "level": 2
+  },
+  {
+    "title": "Executive Coaching",
+    "url": "https://simplycodes.com/category/business/executive-coaching",
+    "category_path": "/category/business/executive-coaching",
+    "level": 2
+  },
+  {
+    "title": "Material Handling",
+    "url": "https://simplycodes.com/category/business/material-handling",
+    "category_path": "/category/business/material-handling",
+    "level": 2
+  },
+  {
+    "title": "Office & School Supplies",
+    "url": "https://simplycodes.com/category/business/office-supplies",
+    "category_path": "/category/business/office-supplies",
+    "level": 2
+  },
+  {
+    "title": "Packaging & Shipping",
+    "url": "https://simplycodes.com/category/business/packaging-shipping",
+    "category_path": "/category/business/packaging-shipping",
+    "level": 2
+  },
+  {
+    "title": "People Search",
+    "url": "https://simplycodes.com/category/business/people-search",
+    "category_path": "/category/business/people-search",
+    "level": 2
+  },
+  {
+    "title": "Retail Fixtures & Supplies",
+    "url": "https://simplycodes.com/category/business/retail-fixtures-supplies",
+    "category_path": "/category/business/retail-fixtures-supplies",
+    "level": 2
+  },
+  {
+    "title": "Safety & Security Equipment",
+    "url": "https://simplycodes.com/category/business/safety-equipment",
+    "category_path": "/category/business/safety-equipment",
+    "level": 2
+  },
+  {
+    "title": "Educational Resources",
+    "url": "https://simplycodes.com/category/career-learning/educational-resources",
+    "category_path": "/category/career-learning/educational-resources",
+    "level": 2
+  },
+  {
+    "title": "Higher Education",
+    "url": "https://simplycodes.com/category/career-learning/higher-education",
+    "category_path": "/category/career-learning/higher-education",
+    "level": 2
+  },
+  {
+    "title": "K-12 Education",
+    "url": "https://simplycodes.com/category/career-learning/k-12-education",
+    "category_path": "/category/career-learning/k-12-education",
+    "level": 2
+  },
+  {
+    "title": "Professional Development & Skills Training",
+    "url": "https://simplycodes.com/category/career-learning/professional-development-skills-training",
+    "category_path": "/category/career-learning/professional-development-skills-training",
+    "level": 2
+  },
+  {
+    "title": "Cameras & Camcorders",
+    "url": "https://simplycodes.com/category/devices/cameras-camcorders",
+    "category_path": "/category/devices/cameras-camcorders",
+    "level": 2
+  },
+  {
+    "title": "Car Electronics & GPS",
+    "url": "https://simplycodes.com/category/devices/car-electronics-gps",
+    "category_path": "/category/devices/car-electronics-gps",
+    "level": 2
+  },
+  {
+    "title": "Cell Phones",
+    "url": "https://simplycodes.com/category/devices/cell-phones-accessories",
+    "category_path": "/category/devices/cell-phones-accessories",
+    "level": 2
+  },
+  {
+    "title": "Computers & Accessories",
+    "url": "https://simplycodes.com/category/devices/computers-accessories",
+    "category_path": "/category/devices/computers-accessories",
+    "level": 2
+  },
+  {
+    "title": "Drones",
+    "url": "https://simplycodes.com/category/devices/drones",
+    "category_path": "/category/devices/drones",
+    "level": 2
+  },
+  {
+    "title": "Robotics Supplies",
+    "url": "https://simplycodes.com/category/devices/robotics-supplies",
+    "category_path": "/category/devices/robotics-supplies",
+    "level": 2
+  },
+  {
+    "title": "Smart Home",
+    "url": "https://simplycodes.com/category/devices/smart-home",
+    "category_path": "/category/devices/smart-home",
+    "level": 2
+  },
+  {
+    "title": "Speakers & Audio",
+    "url": "https://simplycodes.com/category/devices/audio",
+    "category_path": "/category/devices/audio",
+    "level": 2
+  },
+  {
+    "title": "TVs & Home Theater",
+    "url": "https://simplycodes.com/category/devices/tvs-home-theater",
+    "category_path": "/category/devices/tvs-home-theater",
+    "level": 2
+  },
+  {
+    "title": "Video Games & Accessories",
+    "url": "https://simplycodes.com/category/devices/video-games-accessories",
+    "category_path": "/category/devices/video-games-accessories",
+    "level": 2
+  },
+  {
+    "title": "Wearable Technology",
+    "url": "https://simplycodes.com/category/devices/wearable-technology",
+    "category_path": "/category/devices/wearable-technology",
+    "level": 2
+  },
+  {
+    "title": "WiFi & Networking",
+    "url": "https://simplycodes.com/category/devices/wifi-networking",
+    "category_path": "/category/devices/wifi-networking",
+    "level": 2
+  },
+  {
+    "title": "Audio & Music",
+    "url": "https://simplycodes.com/category/online/audio-music",
+    "category_path": "/category/online/audio-music",
+    "level": 2
+  },
+  {
+    "title": "Blogs",
+    "url": "https://simplycodes.com/category/online/blogs",
+    "category_path": "/category/online/blogs",
+    "level": 2
+  },
+  {
+    "title": "Books",
+    "url": "https://simplycodes.com/category/online/books",
+    "category_path": "/category/online/books",
+    "level": 2
+  },
+  {
+    "title": "Entertainment Attractions",
+    "url": "https://simplycodes.com/category/online/entertainment-attractions",
+    "category_path": "/category/online/entertainment-attractions",
+    "level": 2
+  },
+  {
+    "title": "Events",
+    "url": "https://simplycodes.com/category/online/events",
+    "category_path": "/category/online/events",
+    "level": 2
+  },
+  {
+    "title": "Gambling",
+    "url": "https://simplycodes.com/category/online/gambling",
+    "category_path": "/category/online/gambling",
+    "level": 2
+  },
+  {
+    "title": "Gaming",
+    "url": "https://simplycodes.com/category/online/videogames",
+    "category_path": "/category/online/videogames",
+    "level": 2
+  },
+  {
+    "title": "Movies & TV",
+    "url": "https://simplycodes.com/category/online/movies-tv",
+    "category_path": "/category/online/movies-tv",
+    "level": 2
+  },
+  {
+    "title": "News & Magazines",
+    "url": "https://simplycodes.com/category/online/news-magazines",
+    "category_path": "/category/online/news-magazines",
+    "level": 2
+  },
+  {
+    "title": "Social Platforms",
+    "url": "https://simplycodes.com/category/online/social-platforms",
+    "category_path": "/category/online/social-platforms",
+    "level": 2
+  },
+  {
+    "title": "Apparel Marketplaces",
+    "url": "https://simplycodes.com/category/fashion/apparel-marketplaces",
+    "category_path": "/category/fashion/apparel-marketplaces",
+    "level": 2
+  },
+  {
+    "title": "Clothing",
+    "url": "https://simplycodes.com/category/fashion/clothes",
+    "category_path": "/category/fashion/clothes",
+    "level": 2
+  },
+  {
+    "title": "Costumes",
+    "url": "https://simplycodes.com/category/fashion/costumes",
+    "category_path": "/category/fashion/costumes",
+    "level": 2
+  },
+  {
+    "title": "Fashion Retailers",
+    "url": "https://simplycodes.com/category/fashion/fashion-retailers",
+    "category_path": "/category/fashion/fashion-retailers",
+    "level": 2
+  },
+  {
+    "title": "Footwear",
+    "url": "https://simplycodes.com/category/fashion/shoes",
+    "category_path": "/category/fashion/shoes",
+    "level": 2
+  },
+  {
+    "title": "Men's Accessories",
+    "url": "https://simplycodes.com/category/fashion/accessories",
+    "category_path": "/category/fashion/accessories",
+    "level": 2
+  },
+  {
+    "title": "Speciality & Boutique Stores",
+    "url": "https://simplycodes.com/category/fashion/speciality-boutique",
+    "category_path": "/category/fashion/speciality-boutique",
+    "level": 2
+  },
+  {
+    "title": "Workwear",
+    "url": "https://simplycodes.com/category/fashion/workwear",
+    "category_path": "/category/fashion/workwear",
+    "level": 2
+  },
+  {
+    "title": "Beverages",
+    "url": "https://simplycodes.com/category/food-restaurants/beverages",
+    "category_path": "/category/food-restaurants/beverages",
+    "level": 2
+  },
+  {
+    "title": "Food & Drink Subscriptions",
+    "url": "https://simplycodes.com/category/food-restaurants/food-drink-subscriptions",
+    "category_path": "/category/food-restaurants/food-drink-subscriptions",
+    "level": 2
+  },
+  {
+    "title": "Food & Ingredients",
+    "url": "https://simplycodes.com/category/food-restaurants/food-ingredients",
+    "category_path": "/category/food-restaurants/food-ingredients",
+    "level": 2
+  },
+  {
+    "title": "Food Delivery & Takeout",
+    "url": "https://simplycodes.com/category/food-restaurants/food-delivery-takeout",
+    "category_path": "/category/food-restaurants/food-delivery-takeout",
+    "level": 2
+  },
+  {
+    "title": "Grocery Stores",
+    "url": "https://simplycodes.com/category/food-restaurants/grocery-stores",
+    "category_path": "/category/food-restaurants/grocery-stores",
+    "level": 2
+  },
+  {
+    "title": "Restaurants",
+    "url": "https://simplycodes.com/category/food-restaurants/restaurants",
+    "category_path": "/category/food-restaurants/restaurants",
+    "level": 2
+  },
+  {
+    "title": "Fitness & Exercise",
+    "url": "https://simplycodes.com/category/health/fitness-exercise",
+    "category_path": "/category/health/fitness-exercise",
+    "level": 2
+  },
+  {
+    "title": "Medical Advice & Services",
+    "url": "https://simplycodes.com/category/health/medical-advice-services",
+    "category_path": "/category/health/medical-advice-services",
+    "level": 2
+  },
+  {
+    "title": "Medical Supplies & Equipment",
+    "url": "https://simplycodes.com/category/health/medical-supplies",
+    "category_path": "/category/health/medical-supplies",
+    "level": 2
+  },
+  {
+    "title": "Medicine Cabinet",
+    "url": "https://simplycodes.com/category/health/medications-treatments",
+    "category_path": "/category/health/medications-treatments",
+    "level": 2
+  },
+  {
+    "title": "Natural & Alternative Remedies",
+    "url": "https://simplycodes.com/category/health/alternative-medicine",
+    "category_path": "/category/health/alternative-medicine",
+    "level": 2
+  },
+  {
+    "title": "Oral Care",
+    "url": "https://simplycodes.com/category/health/oral-care",
+    "category_path": "/category/health/oral-care",
+    "level": 2
+  },
+  {
+    "title": "Vision Care",
+    "url": "https://simplycodes.com/category/health/vision-care",
+    "category_path": "/category/health/vision-care",
+    "level": 2
+  },
+  {
+    "title": "Vitamins & Supplements",
+    "url": "https://simplycodes.com/category/health/vitamins-supplements",
+    "category_path": "/category/health/vitamins-supplements",
+    "level": 2
+  },
+  {
+    "title": "Wellness & Health Care",
+    "url": "https://simplycodes.com/category/health/wellness",
+    "category_path": "/category/health/wellness",
+    "level": 2
+  },
+  {
+    "title": "Arts, Crafts & Sewing",
+    "url": "https://simplycodes.com/category/hobbies-toys/arts-crafts",
+    "category_path": "/category/hobbies-toys/arts-crafts",
+    "level": 2
+  },
+  {
+    "title": "Collectibles",
+    "url": "https://simplycodes.com/category/hobbies-toys/collectibles",
+    "category_path": "/category/hobbies-toys/collectibles",
+    "level": 2
+  },
+  {
+    "title": "Games & Accessories",
+    "url": "https://simplycodes.com/category/hobbies-toys/games-accessories",
+    "category_path": "/category/hobbies-toys/games-accessories",
+    "level": 2
+  },
+  {
+    "title": "Gifts",
+    "url": "https://simplycodes.com/category/hobbies-toys/gifts",
+    "category_path": "/category/hobbies-toys/gifts",
+    "level": 2
+  },
+  {
+    "title": "Hobbies",
+    "url": "https://simplycodes.com/category/hobbies-toys/hobbies",
+    "category_path": "/category/hobbies-toys/hobbies",
+    "level": 2
+  },
+  {
+    "title": "Musical Instruments & Merchandise",
+    "url": "https://simplycodes.com/category/hobbies-toys/dj-gear",
+    "category_path": "/category/hobbies-toys/dj-gear",
+    "level": 2
+  },
+  {
+    "title": "Personal Affiliation",
+    "url": "https://simplycodes.com/category/hobbies-toys/personal-affiliation",
+    "category_path": "/category/hobbies-toys/personal-affiliation",
+    "level": 2
+  },
+  {
+    "title": "Toys",
+    "url": "https://simplycodes.com/category/hobbies-toys/toys1",
+    "category_path": "/category/hobbies-toys/toys1",
+    "level": 2
+  },
+  {
+    "title": "Baby",
+    "url": "https://simplycodes.com/category/home-garden/baby",
+    "category_path": "/category/home-garden/baby",
+    "level": 2
+  },
+  {
+    "title": "Bed & Bath",
+    "url": "https://simplycodes.com/category/home-garden/bed-bath",
+    "category_path": "/category/home-garden/bed-bath",
+    "level": 2
+  },
+  {
+    "title": "Emergency Preparedness",
+    "url": "https://simplycodes.com/category/home-garden/emergency-preparedness",
+    "category_path": "/category/home-garden/emergency-preparedness",
+    "level": 2
+  },
+  {
+    "title": "Furniture",
+    "url": "https://simplycodes.com/category/home-garden/furniture",
+    "category_path": "/category/home-garden/furniture",
+    "level": 2
+  },
+  {
+    "title": "Garden & Outdoor",
+    "url": "https://simplycodes.com/category/home-garden/garden-outdoor",
+    "category_path": "/category/home-garden/garden-outdoor",
+    "level": 2
+  },
+  {
+    "title": "Home Decor",
+    "url": "https://simplycodes.com/category/home-garden/home-decor",
+    "category_path": "/category/home-garden/home-decor",
+    "level": 2
+  },
+  {
+    "title": "Home Improvement",
+    "url": "https://simplycodes.com/category/home-garden/homeimprovement",
+    "category_path": "/category/home-garden/homeimprovement",
+    "level": 2
+  },
+  {
+    "title": "Kitchen & Dining",
+    "url": "https://simplycodes.com/category/home-garden/kitchen-dining",
+    "category_path": "/category/home-garden/kitchen-dining",
+    "level": 2
+  },
+  {
+    "title": "Banking & Loans",
+    "url": "https://simplycodes.com/category/money/banking",
+    "category_path": "/category/money/banking",
+    "level": 2
+  },
+  {
+    "title": "Charity & Fundraising",
+    "url": "https://simplycodes.com/category/money/charities-fundraising",
+    "category_path": "/category/money/charities-fundraising",
+    "level": 2
+  },
+  {
+    "title": "Credit & Loans",
+    "url": "https://simplycodes.com/category/money/credit-loans",
+    "category_path": "/category/money/credit-loans",
+    "level": 2
+  },
+  {
+    "title": "Insurance",
+    "url": "https://simplycodes.com/category/money/insurance",
+    "category_path": "/category/money/insurance",
+    "level": 2
+  },
+  {
+    "title": "Personal Finance",
+    "url": "https://simplycodes.com/category/money/financial-management",
+    "category_path": "/category/money/financial-management",
+    "level": 2
+  },
+  {
+    "title": "Personal Investing & Trading",
+    "url": "https://simplycodes.com/category/money/investing-trading",
+    "category_path": "/category/money/investing-trading",
+    "level": 2
+  },
+  {
+    "title": "Protection Services",
+    "url": "https://simplycodes.com/category/money/protection-services",
+    "category_path": "/category/money/protection-services",
+    "level": 2
+  },
+  {
+    "title": "Real Estate & Moving",
+    "url": "https://simplycodes.com/category/money/real-estate-housing",
+    "category_path": "/category/money/real-estate-housing",
+    "level": 2
+  },
+  {
+    "title": "Bird Care",
+    "url": "https://simplycodes.com/category/pets/bird-care",
+    "category_path": "/category/pets/bird-care",
+    "level": 2
+  },
+  {
+    "title": "Cat Care",
+    "url": "https://simplycodes.com/category/pets/cat-care",
+    "category_path": "/category/pets/cat-care",
+    "level": 2
+  },
+  {
+    "title": "Chickens & Supplies",
+    "url": "https://simplycodes.com/category/pets/chickens-supplies",
+    "category_path": "/category/pets/chickens-supplies",
+    "level": 2
+  },
+  {
+    "title": "Dog Care",
+    "url": "https://simplycodes.com/category/pets/dog-care",
+    "category_path": "/category/pets/dog-care",
+    "level": 2
+  },
+  {
+    "title": "Fish & Aquatic Pet Care",
+    "url": "https://simplycodes.com/category/pets/fish-aquatic-pet-care",
+    "category_path": "/category/pets/fish-aquatic-pet-care",
+    "level": 2
+  },
+  {
+    "title": "Horse Care",
+    "url": "https://simplycodes.com/category/pets/horse-care",
+    "category_path": "/category/pets/horse-care",
+    "level": 2
+  },
+  {
+    "title": "Pet Services",
+    "url": "https://simplycodes.com/category/pets/pet-services",
+    "category_path": "/category/pets/pet-services",
+    "level": 2
+  },
+  {
+    "title": "Pet Supplies",
+    "url": "https://simplycodes.com/category/pets/pet-supplies",
+    "category_path": "/category/pets/pet-supplies",
+    "level": 2
+  },
+  {
+    "title": "Reptiles & Amphibian Care",
+    "url": "https://simplycodes.com/category/pets/reptiles-amphibian-care",
+    "category_path": "/category/pets/reptiles-amphibian-care",
+    "level": 2
+  },
+  {
+    "title": "Small Pets & Supplies",
+    "url": "https://simplycodes.com/category/pets/small-pets-supplies",
+    "category_path": "/category/pets/small-pets-supplies",
+    "level": 2
+  },
+  {
+    "title": "Coupons & Rewards",
+    "url": "https://simplycodes.com/category/shopping-related-services/coupons-rewards",
+    "category_path": "/category/shopping-related-services/coupons-rewards",
+    "level": 2
+  },
+  {
+    "title": "Software Marketplaces",
+    "url": "https://simplycodes.com/category/shopping-related-services/software-marketplaces",
+    "category_path": "/category/shopping-related-services/software-marketplaces",
+    "level": 2
+  },
+  {
+    "title": "Business Solutions",
+    "url": "https://simplycodes.com/category/software/business-solutions",
+    "category_path": "/category/software/business-solutions",
+    "level": 2
+  },
+  {
+    "title": "Communication Tools",
+    "url": "https://simplycodes.com/category/software/communication-software",
+    "category_path": "/category/software/communication-software",
+    "level": 2
+  },
+  {
+    "title": "Creativity & Design",
+    "url": "https://simplycodes.com/category/software/creativity-design",
+    "category_path": "/category/software/creativity-design",
+    "level": 2
+  },
+  {
+    "title": "Jobs & Hiring",
+    "url": "https://simplycodes.com/category/software/jobs-hiring",
+    "category_path": "/category/software/jobs-hiring",
+    "level": 2
+  },
+  {
+    "title": "Marketing Tools",
+    "url": "https://simplycodes.com/category/software/marketing-tools",
+    "category_path": "/category/software/marketing-tools",
+    "level": 2
+  },
+  {
+    "title": "Productivity",
+    "url": "https://simplycodes.com/category/software/remote-working-tools",
+    "category_path": "/category/software/remote-working-tools",
+    "level": 2
+  },
+  {
+    "title": "Software Utilities",
+    "url": "https://simplycodes.com/category/software/software-utilities",
+    "category_path": "/category/software/software-utilities",
+    "level": 2
+  },
+  {
+    "title": "Website Development",
+    "url": "https://simplycodes.com/category/software/website-development",
+    "category_path": "/category/software/website-development",
+    "level": 2
+  },
+  {
+    "title": "Writing Assistants",
+    "url": "https://simplycodes.com/category/software/writing-assistants",
+    "category_path": "/category/software/writing-assistants",
+    "level": 2
+  },
+  {
+    "title": "Archery",
+    "url": "https://simplycodes.com/category/sports-outdoors/archery",
+    "category_path": "/category/sports-outdoors/archery",
+    "level": 2
+  },
+  {
+    "title": "Boating & Fishing",
+    "url": "https://simplycodes.com/category/sports-outdoors/boating",
+    "category_path": "/category/sports-outdoors/boating",
+    "level": 2
+  },
+  {
+    "title": "Camping & Hiking",
+    "url": "https://simplycodes.com/category/sports-outdoors/camping-hiking",
+    "category_path": "/category/sports-outdoors/camping-hiking",
+    "level": 2
+  },
+  {
+    "title": "Climbing",
+    "url": "https://simplycodes.com/category/sports-outdoors/climbing",
+    "category_path": "/category/sports-outdoors/climbing",
+    "level": 2
+  },
+  {
+    "title": "Cycling",
+    "url": "https://simplycodes.com/category/sports-outdoors/cycling",
+    "category_path": "/category/sports-outdoors/cycling",
+    "level": 2
+  },
+  {
+    "title": "Fishing",
+    "url": "https://simplycodes.com/category/sports-outdoors/fishing",
+    "category_path": "/category/sports-outdoors/fishing",
+    "level": 2
+  },
+  {
+    "title": "Golfing",
+    "url": "https://simplycodes.com/category/sports-outdoors/golfing",
+    "category_path": "/category/sports-outdoors/golfing",
+    "level": 2
+  },
+  {
+    "title": "Hunting",
+    "url": "https://simplycodes.com/category/sports-outdoors/hunting",
+    "category_path": "/category/sports-outdoors/hunting",
+    "level": 2
+  },
+  {
+    "title": "Leisure Sports & Game Room",
+    "url": "https://simplycodes.com/category/sports-outdoors/leisure-sports-games",
+    "category_path": "/category/sports-outdoors/leisure-sports-games",
+    "level": 2
+  },
+  {
+    "title": "Self Defense",
+    "url": "https://simplycodes.com/category/sports-outdoors/self-defense",
+    "category_path": "/category/sports-outdoors/self-defense",
+    "level": 2
+  },
+  {
+    "title": "Skates, Skateboards & Scooters",
+    "url": "https://simplycodes.com/category/sports-outdoors/skates-skateboards-scooters",
+    "category_path": "/category/sports-outdoors/skates-skateboards-scooters",
+    "level": 2
+  },
+  {
+    "title": "Sporting Goods",
+    "url": "https://simplycodes.com/category/sports-outdoors/sporting-goods",
+    "category_path": "/category/sports-outdoors/sporting-goods",
+    "level": 2
+  },
+  {
+    "title": "Team Sports",
+    "url": "https://simplycodes.com/category/sports-outdoors/team-sports",
+    "category_path": "/category/sports-outdoors/team-sports",
+    "level": 2
+  },
+  {
+    "title": "Water Sports",
+    "url": "https://simplycodes.com/category/sports-outdoors/water-sports",
+    "category_path": "/category/sports-outdoors/water-sports",
+    "level": 2
+  },
+  {
+    "title": "Winter Sports",
+    "url": "https://simplycodes.com/category/sports-outdoors/winter-sports",
+    "category_path": "/category/sports-outdoors/winter-sports",
+    "level": 2
+  },
+  {
+    "title": "Air Travel",
+    "url": "https://simplycodes.com/category/places/air-travel",
+    "category_path": "/category/places/air-travel",
+    "level": 2
+  },
+  {
+    "title": "Cruises",
+    "url": "https://simplycodes.com/category/places/cruises",
+    "category_path": "/category/places/cruises",
+    "level": 2
+  },
+  {
+    "title": "Lodging",
+    "url": "https://simplycodes.com/category/places/lodging",
+    "category_path": "/category/places/lodging",
+    "level": 2
+  },
+  {
+    "title": "Luggage & Travel Gear",
+    "url": "https://simplycodes.com/category/places/luggage-travel-bags",
+    "category_path": "/category/places/luggage-travel-bags",
+    "level": 2
+  },
+  {
+    "title": "Transportation",
+    "url": "https://simplycodes.com/category/places/transportation",
+    "category_path": "/category/places/transportation",
+    "level": 2
+  },
+  {
+    "title": "Travel Accessories",
+    "url": "https://simplycodes.com/category/places/travelgear",
+    "category_path": "/category/places/travelgear",
+    "level": 2
+  },
+  {
+    "title": "Travel Services",
+    "url": "https://simplycodes.com/category/places/travel-services",
+    "category_path": "/category/places/travel-services",
+    "level": 2
+  },
+  {
+    "title": "Cryptocurrencies",
+    "url": "https://simplycodes.com/category/blockchain-web3/cryptocurrencies",
+    "category_path": "/category/blockchain-web3/cryptocurrencies",
+    "level": 2
+  },
+  {
+    "title": "Cryptocurrency",
+    "url": "https://simplycodes.com/category/blockchain-web3/cryptocurrency-software",
+    "category_path": "/category/blockchain-web3/cryptocurrency-software",
+    "level": 2
+  },
+  {
+    "title": "Decentralized Applications",
+    "url": "https://simplycodes.com/category/blockchain-web3/decentralized-applications",
+    "category_path": "/category/blockchain-web3/decentralized-applications",
+    "level": 2
+  },
+  {
+    "title": "DeFi",
+    "url": "https://simplycodes.com/category/blockchain-web3/defi",
+    "category_path": "/category/blockchain-web3/defi",
+    "level": 2
+  },
+  {
+    "title": "NFTs",
+    "url": "https://simplycodes.com/category/blockchain-web3/nfts",
+    "category_path": "/category/blockchain-web3/nfts",
+    "level": 2
+  }
+]
