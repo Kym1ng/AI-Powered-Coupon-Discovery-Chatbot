@@ -91,7 +91,37 @@ class SimplyCodesScraper:
             
             # First, get the main level 2 categories
             print("🔍 Extracting main categories (level 2)...")
-            main_category_links = self.page.query_selector_all('div.flex.flex-row.items-center.justify-between.rounded-16 div.title a')
+            # Try multiple selectors to catch all level 2 categories
+            main_category_links = []
+            
+            # Selector 1: Original specific selector
+            links1 = self.page.query_selector_all('div.flex.flex-row.items-center.justify-between.rounded-16 div.title a')
+            main_category_links.extend(links1)
+            print(f"  Selector 1 found: {len(links1)} links")
+            
+            # Selector 2: More general selector for category links
+            links2 = self.page.query_selector_all('a[href*="/category/"]')
+            main_category_links.extend(links2)
+            print(f"  Selector 2 found: {len(links2)} links")
+            
+            # Selector 3: Look for links within category containers
+            links3 = self.page.query_selector_all('div[class*="category"] a, div[class*="rounded"] a')
+            main_category_links.extend(links3)
+            print(f"  Selector 3 found: {len(links3)} links")
+            
+            # Remove duplicates based on href
+            unique_links = []
+            seen_hrefs = set()
+            for link in main_category_links:
+                try:
+                    href = link.get_attribute('href')
+                    if href and href not in seen_hrefs:
+                        seen_hrefs.add(href)
+                        unique_links.append(link)
+                except:
+                    continue
+            
+            main_category_links = unique_links
             
             print(f"Found {len(main_category_links)} main category links")
             
@@ -109,11 +139,20 @@ class SimplyCodesScraper:
                         else:
                             full_url = href
                         
+                        # Determine the correct level based on path structure
+                        path_parts = href.split('/')
+                        if len(path_parts) == 4:  # /category/level1/level2
+                            level = 2
+                        elif len(path_parts) >= 5:  # /category/level1/level2/level3
+                            level = 3
+                        else:
+                            level = 2  # Default to level 2
+                        
                         main_categories_data.append({
                             'title': title,
                             'url': full_url,
                             'category_path': href,
-                            'level': 2
+                            'level': level
                         })
                         print(f"  📁 Level 2: {title}: {full_url}")
                         
@@ -140,66 +179,64 @@ class SimplyCodesScraper:
         """Extract level 3 subcategories directly from the main categories page."""
         subcategories = []
         try:
-            # Try to expand all collapsible sections so nested UL/LIs are visible
-            self._expand_all_subcategory_sections()
-
-            # Look for level 3 subcategory links directly on the main page
-            # Based on the HTML structure from the image: li > a[href*="/category/"]
-            level3_selectors = [
-                'li a[href*="/category/"]',  # Links within li elements (as seen in the image)
-                'ul.ml-6 a[href*="/category/"]',  # Links within the nested ul with ml-6 class
-                'a.body-2.text-gray-30[href*="/category/"]',  # Specific class from the image
-                'div[data-state="open"] ul a[href*="/category/"]',  # Links in expanded sections
-            ]
+            # Find all overflow-hidden divs that contain level 3 categories
+            overflow_divs = self.page.query_selector_all('div.overflow-hidden')
+            print(f"    🔍 Found {len(overflow_divs)} overflow-hidden divs")
             
-            found_links = set()  # To avoid duplicates
-            
-            for selector in level3_selectors:
+            for div in overflow_divs:
                 try:
-                    links = self.page.query_selector_all(selector)
-                    print(f"    🔍 Trying selector '{selector}': found {len(links)} links")
+                    # Look for ul elements with the specific classes inside each overflow-hidden div
+                    ul_elements = div.query_selector_all('ul.ml-6.gap-4.flex.flex-col.pb-12')
                     
-                    for link in links:
-                        try:
-                            href = link.get_attribute('href')
-                            title = link.inner_text().strip()
-                            
-                            if href and title and href not in found_links:
-                                # Check if this is a level 3 subcategory (4 parts: /category/level1/level2/level3)
-                                path_parts = href.split('/')
-                                if len(path_parts) >= 5:  # /category/level1/level2/level3
-                                    # Convert relative URLs to absolute URLs
-                                    if href.startswith('/'):
-                                        full_url = f"https://simplycodes.com{href}"
-                                    else:
-                                        full_url = href
+                    for ul in ul_elements:
+                        # Extract all li elements within this ul
+                        li_elements = ul.query_selector_all('li')
+                        
+                        for li in li_elements:
+                            try:
+                                # Find the anchor tag within each li
+                                link = li.query_selector('a')
+                                if link:
+                                    href = link.get_attribute('href')
+                                    title = link.inner_text().strip()
                                     
-                                    # Extract level information from path
-                                    level1 = path_parts[2] if len(path_parts) > 2 else ""
-                                    level2 = path_parts[3] if len(path_parts) > 3 else ""
-                                    level3 = path_parts[4] if len(path_parts) > 4 else ""
-                                    
-                                    subcategories.append({
-                                        'title': title,
-                                        'url': full_url,
-                                        'category_path': href,
-                                        'level': 3,
-                                        'parent_category': f"{level1} > {level2}",
-                                        'parent_path': f"/category/{level1}/{level2}",
-                                        'level1': level1,
-                                        'level2': level2,
-                                        'level3': level3
-                                    })
-                                    found_links.add(href)
-                                    print(f"      📂 Level 3: {title} ({level1} > {level2} > {level3}): {full_url}")
-                                    
-                        except Exception as e:
-                            print(f"      ⚠️  Error processing link: {e}")
-                            continue
+                                    if href and title:
+                                        # Check if this is a level 3 subcategory (4 parts: /category/level1/level2/level3)
+                                        path_parts = href.split('/')
+                                        if len(path_parts) >= 5:  # /category/level1/level2/level3
+                                            # Convert relative URLs to absolute URLs
+                                            if href.startswith('/'):
+                                                full_url = f"https://simplycodes.com{href}"
+                                            else:
+                                                full_url = href
+                                            
+                                            # Extract level information from path
+                                            level1 = path_parts[2] if len(path_parts) > 2 else ""
+                                            level2 = path_parts[3] if len(path_parts) > 3 else ""
+                                            level3 = path_parts[4] if len(path_parts) > 4 else ""
+                                            
+                                            subcategories.append({
+                                                'title': title,
+                                                'url': full_url,
+                                                'category_path': href,
+                                                'level': 3,
+                                                'parent_category': f"{level1} > {level2}",
+                                                'parent_path': f"/category/{level1}/{level2}",
+                                                'level1': level1,
+                                                'level2': level2,
+                                                'level3': level3
+                                            })
+                                            print(f"      📂 Level 3: {title} ({level1} > {level2} > {level3}): {full_url}")
+                                            
+                            except Exception as e:
+                                print(f"      ⚠️  Error processing li element: {e}")
+                                continue
                                     
                 except Exception as e:
-                    print(f"    ⚠️  Error with selector '{selector}': {e}")
+                    print(f"    ⚠️  Error processing overflow-hidden div: {e}")
                     continue
+            
+
             
             print(f"  ✅ Found {len(subcategories)} level 3 subcategories from main page")
             return subcategories
@@ -208,55 +245,7 @@ class SimplyCodesScraper:
             print(f"❌ Error extracting level 3 subcategories: {e}")
             return []
 
-    def _expand_all_subcategory_sections(self):
-        """Expand all collapsible sections on the categories page so subcategory lists are visible."""
-        try:
-            # Sometimes content is lazy-rendered; scroll to bottom and back up
-            try:
-                self.page.mouse.wheel(0, 2000)
-                self.random_delay(0.5, 1.0)
-                self.page.mouse.wheel(0, -2000)
-                self.random_delay(0.5, 1.0)
-            except Exception:
-                pass
 
-            toggle_selectors = [
-                'div[role="button"][aria-controls]',  # Common pattern on this site
-                'button[aria-controls]',
-                'div[aria-controls][class*="accordion"]',
-                '[data-state] [role="button"]',  # Fallback
-            ]
-
-            total_clicked = 0
-            for selector in toggle_selectors:
-                try:
-                    toggles = self.page.query_selector_all(selector)
-                    for toggle in toggles:
-                        try:
-                            # Skip if already expanded
-                            expanded = toggle.get_attribute('aria-expanded')
-                            if expanded and expanded.lower() == 'true':
-                                continue
-
-                            toggle.click()
-                            total_clicked += 1
-                            # Give the animation time to finish and content to render
-                            self.random_delay(0.2, 0.5)
-                        except Exception:
-                            continue
-                except Exception:
-                    continue
-
-            if total_clicked:
-                print(f"    ⬇️ Expanded {total_clicked} collapsible sections")
-            else:
-                print("    ℹ️ No collapsible toggles detected or already expanded")
-
-            # Wait briefly to ensure DOM is updated
-            self.random_delay(0.3, 0.6)
-
-        except Exception as e:
-            print(f"    ⚠️  Error while expanding sections: {e}")
 
     def _extract_subcategories(self, category_url, category_path, category_title):
         """Extract deeper subcategories from a category page."""
@@ -521,59 +510,108 @@ class SimplyCodesScraper:
         
         # First, organize categories by level
         for category in categories:
-            path_parts = category['category_path'].split('/')
             level = category.get('level', 2)  # Default to level 2 if not specified
             
-            if level == 2 and len(path_parts) >= 3:
-                # Level 2 category: /category/level2
-                level2 = path_parts[2]
-                
-                if level2 not in tree:
-                    tree[level2] = {
-                        'category_name': level2.replace('-', ' ').title(),
-                        'category_path': f"/category/{level2}",
-                        'subcategories': {}
+            if level == 2:
+                # Level 2 category: /category/level1/level2
+                path_parts = category['category_path'].split('/')
+                if len(path_parts) >= 4:
+                    level1 = path_parts[2]  # artificial-intelligence
+                    level2 = path_parts[3]  # ai-content-creation
+                    
+                    # Ensure level 1 category exists
+                    if level1 not in tree:
+                        tree[level1] = {
+                            'category_name': level1.replace('-', ' ').title(),
+                            'category_path': f"/category/{level1}",
+                            'subcategories': {}
+                        }
+                    
+                    # Add level 2 subcategory
+                    tree[level1]['subcategories'][level2] = {
+                        'subcategories_name': category['title'],
+                        'subcategories_path': category['category_path'],
+                        'url': category['url'],
+                        'level': 2,
+                        'parent_category': category.get('parent_category', ''),
+                        'coupons': []
                     }
                 
-            elif level == 3 and len(path_parts) >= 4:
-                # Level 3 subcategory: /category/level2/level3
-                level2 = path_parts[2]
-                level3 = path_parts[3]
+            elif level == 3:
+                # Level 3 subcategory: /category/level1/level2/level3
+                # Use the pre-extracted level information
+                level1 = category.get('level1', '')
+                level2 = category.get('level2', '')
+                level3 = category.get('level3', '')
                 
-                # Ensure level 2 category exists
-                if level2 not in tree:
-                    tree[level2] = {
-                        'category_name': level2.replace('-', ' ').title(),
-                        'category_path': f"/category/{level2}",
-                        'subcategories': {}
+                if level1 and level2 and level3:
+                    # Ensure level 1 category exists
+                    if level1 not in tree:
+                        tree[level1] = {
+                            'category_name': level1.replace('-', ' ').title(),
+                            'category_path': f"/category/{level1}",
+                            'subcategories': {}
+                        }
+                    
+                    # Ensure level 2 subcategory exists
+                    if level2 not in tree[level1]['subcategories']:
+                        tree[level1]['subcategories'][level2] = {
+                            'subcategories_name': level2.replace('-', ' ').title(),
+                            'subcategories_path': f"/category/{level1}/{level2}",
+                            'url': f"https://simplycodes.com/category/{level1}/{level2}",
+                            'level': 2,
+                            'parent_category': level1,
+                            'coupons': []
+                        }
+                    
+                    # Add level 3 sub-subcategory
+                    tree[level1]['subcategories'][level2]['subcategories'] = tree[level1]['subcategories'][level2].get('subcategories', {})
+                    tree[level1]['subcategories'][level2]['subcategories'][level3] = {
+                        'subcategories_name': category['title'],
+                        'subcategories_path': category['category_path'],
+                        'url': category['url'],
+                        'level': 3,
+                        'parent_category': f"{level1} > {level2}",
+                        'coupons': []
                     }
-                
-                # Add level 3 subcategory
-                tree[level2]['subcategories'][level3] = {
-                    'subcategories_name': category['title'],
-                    'subcategories_path': category['category_path'],
-                    'url': category['url'],
-                    'level': 3,
-                    'parent_category': category.get('parent_category', ''),
-                    'coupons': []
-                }
         
         # Now organize coupons under their respective categories
         for coupon in coupons:
-            path_parts = coupon['category_path'].split('/')
-            if len(path_parts) >= 4:
-                level2 = path_parts[2]
-                level3 = path_parts[3]
+            # Extract category information from coupon
+            category_path = coupon.get('category_path', '')
+            category_level = coupon.get('category_level', 2)
+            
+            if category_level == 2:
+                # Coupon belongs to level 2 category
+                path_parts = category_path.split('/')
+                if len(path_parts) >= 4:
+                    level1 = path_parts[2]
+                    level2 = path_parts[3]
+                    
+                    if level1 in tree and level2 in tree[level1]['subcategories']:
+                        coupon_data = {
+                            'brand': coupon['brand'],
+                            'code': coupon['code'],
+                            'description': coupon['description'],
+                            'button_index': coupon['button_index']
+                        }
+                        tree[level1]['subcategories'][level2]['coupons'].append(coupon_data)
+                        
+            elif category_level == 3:
+                # Coupon belongs to level 3 category
+                level1 = coupon.get('level1', '')
+                level2 = coupon.get('level2', '')
+                level3 = coupon.get('level3', '')
                 
-                if level2 in tree and level3 in tree[level2]['subcategories']:
-                    # Remove category info from coupon to avoid redundancy
-                    coupon_data = {
-                        'brand': coupon['brand'],
-                        'code': coupon['code'],
-                        'description': coupon['description'],
-                        'button_index': coupon['button_index']
-                    }
-                    tree[level2]['subcategories'][level3]['coupons'].append(coupon_data)
+                if level1 in tree and level2 in tree[level1]['subcategories']:
+                    if 'subcategories' in tree[level1]['subcategories'][level2] and level3 in tree[level1]['subcategories'][level2]['subcategories']:
+                        coupon_data = {
+                            'brand': coupon['brand'],
+                            'code': coupon['code'],
+                            'description': coupon['description'],
+                            'button_index': coupon['button_index']
+                        }
+                        tree[level1]['subcategories'][level2]['subcategories'][level3]['coupons'].append(coupon_data)
         
         return tree
 
