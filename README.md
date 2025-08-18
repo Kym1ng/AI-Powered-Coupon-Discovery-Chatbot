@@ -216,8 +216,8 @@ coupon_companion/
 ### **1. Environment Setup**
 ```bash
 # Clone repository
-git clone https://github.com/Kym1ng/Coupon_support.git
-cd Coupon_support/coupon_companion
+git clone https://github.com/Kym1ng/AI-Powered-Coupon-Discovery-Chatbot.git
+cd AI-Powered-Coupon-Discovery-Chatbot/coupon_companion
 
 # Create virtual environment
 python -m venv venv
