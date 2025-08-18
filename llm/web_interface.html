@@ -26,8 +26,8 @@
             border-radius: 20px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             width: 100%;
-            max-width: 800px;
-            height: 600px;
+            max-width: 1000px;
+            height: 700px;
             display: flex;
             flex-direction: column;
             overflow: hidden;
@@ -249,7 +249,8 @@
     <div class="chat-container">
         <div class="chat-header">
             <h1>🎫 Coupon Search Bot</h1>
-            <p>Search 1,239+ brands and categories!</p>
+                            <p>Search 2,510+ brands and categories!</p>
+                <p style="font-size: 12px; opacity: 0.8; margin-top: 5px;">📊 19 main categories • 2,510 subcategories (Level 2 + Level 3)</p>
             <div class="mode-toggle">
                 <button id="basicModeBtn" class="mode-btn active" onclick="switchMode('basic')">
                     🔍 Basic Search (Free)
@@ -316,6 +317,11 @@
                     <br>• Get statistics: "statistics"
                     <br><br>
                     <em>💡 Try searching for: "beauty", "Taplio", "statistics"</em>
+                    <br><br>
+                    <strong>📊 Database: 19 main categories with 2,510 subcategories</strong>
+                    <br>• 19 main categories (Level 1)
+                    <br>• 1,428 level 2 subcategories
+                    <br>• 1,082 level 3 subcategories
                 `;
             } else {
                 welcomeMessage.querySelector('.message-content').innerHTML = `
@@ -328,6 +334,11 @@
                     <br>• Smart recommendations: "What are the top deals today?"
                     <br><br>
                     <em>⚠️ Note: This mode requires a valid OpenAI API key with credits</em>
+                    <br><br>
+                    <strong>📊 Database: 19 main categories with 2,510 subcategories</strong>
+                    <br>• 19 main categories (Level 1)
+                    <br>• 1,428 level 2 subcategories
+                    <br>• 1,082 level 3 subcategories
                 `;
             }
         }
@@ -473,6 +484,9 @@
             }
         }
 
+        // Initialize the interface with basic mode
+        switchMode('basic');
+        
         // Focus on input when page loads
         messageInput.focus();
     </script>
