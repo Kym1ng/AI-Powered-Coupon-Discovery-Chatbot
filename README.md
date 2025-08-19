@@ -50,10 +50,11 @@ A comprehensive web scraper and AI chatbot for extracting and querying coupon co
 
 ## 📊 Current Data Status
 
-**✅ Successfully Discovered:**
+**✅ Successfully Scraped:**
 - **19 Main Categories** (Level 1)
-- **2510 Total Categories** (including subcategories)
-- **1283 Level 2 & 3 Subcategories**
+- **197 Level 2 Categories**
+- **989 Level 3 Categories**
+- **14,856 Total Coupons** from **8,296 Unique Brands**
 - **Complete AI Categories**: AI Devices, AI Detection, AI Hardware, AI Content Creation, etc.
 
 **Example Categories:**
@@ -263,14 +264,17 @@ GOOGLE_API_KEY=your-gemini-api-key-here
 ## 📈 Performance
 
 **Current Data Coverage:**
-- ✅ **2,510 Total Categories** discovered
-- ✅ **1,283 Level 2 & 3 Subcategories** found
+- ✅ **14,856 Total Coupons** scraped
+- ✅ **8,296 Unique Brands** discovered
+- ✅ **1,186 Level 2 & 3 Categories** with coupons
 - ✅ **19 Main Categories** with complete hierarchy
 - ✅ **All AI Categories** including previously missing ones
 
-**Scraping Speed:**
-- ~5 seconds per category (with anti-detection delays)
-- ~2-3 hours for comprehensive scraping of all categories
+**Scraping Results:**
+- ✅ **14,856 coupons** successfully scraped
+- ✅ **8,296 unique brands** discovered
+- ✅ **2,188/2,510 categories** successfully processed (87% success rate)
+- ✅ **1,186 categories** with active coupons
 - Real-time category discovery in ~30 seconds
 
 ## 🤖 Chatbot Modes
@@ -327,6 +331,8 @@ GOOGLE_API_KEY=your-gemini-api-key-here
 ## 🔄 Recent Updates
 
 **Latest Improvements:**
+- ✅ **Completed comprehensive scraping**: 14,856 coupons from 8,296 brands
+- ✅ **87% success rate**: 2,188/2,510 categories successfully processed
 - ✅ Fixed level 3 category discovery
 - ✅ Enhanced selectors to find all level 2 categories (with and without level 3)
 - ✅ Improved tree organization with proper 3-level hierarchy
