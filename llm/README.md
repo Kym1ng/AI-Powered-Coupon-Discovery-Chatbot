@@ -42,7 +42,7 @@ python test_assistant.py
 
 ### Start the API Server
 ```bash
-python api.py
+python api_openai.py
 ```
 
 The API will be available at `http://localhost:8000`

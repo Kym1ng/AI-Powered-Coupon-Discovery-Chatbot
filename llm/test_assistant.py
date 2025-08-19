@@ -1,19 +1,19 @@
 #!/usr/bin/env python3
 """
-Test script for the Coupon Assistant
+Test script for the OpenAI Coupon Assistant
 Run this to verify everything is working correctly
 """
 
 import os
 from dotenv import load_dotenv
-from assistant import CouponAssistant
+from assistant_openai import CouponAssistant
 
 # Load environment variables
 load_dotenv()
 
 def test_assistant():
     """Test the coupon assistant functionality"""
-    print("🧪 Testing Coupon Assistant...")
+    print("🧪 Testing OpenAI Coupon Assistant...")
     
     # Check if OpenAI API key is available
     api_key = os.getenv("OPENAI_API_KEY")
@@ -25,9 +25,9 @@ def test_assistant():
     
     try:
         # Initialize assistant
-        print("🔄 Initializing Coupon Assistant...")
+        print("🔄 Initializing OpenAI Coupon Assistant...")
         assistant = CouponAssistant()
-        print("✅ Assistant initialized successfully!")
+        print("✅ OpenAI Assistant initialized successfully!")
         
         # Get stats
         print("\n📊 Getting statistics...")
@@ -95,7 +95,7 @@ def test_assistant():
 if __name__ == "__main__":
     success = test_assistant()
     if success:
-        print("\n🎉 Ready to start the API server!")
-        print("Run: python -m llm.api")
+        print("\n🎉 Ready to start the OpenAI API server!")
+        print("Run: python llm/api_openai.py")
     else:
         print("\n❌ Please fix the issues above before proceeding.")

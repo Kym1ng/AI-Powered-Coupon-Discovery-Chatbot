@@ -17,8 +17,8 @@ A comprehensive web scraper and AI chatbot for extracting and querying coupon co
 - 🏷️ **Brand listing** - See all available brands
 - ⚡ **Fast response** - Instant results without AI processing
 
-### 🤖 AI Chat Mode (OpenAI)
-*Requires OpenAI API key - Natural language conversations and smart recommendations*
+### 🤖 AI Chat Mode (Gemini)
+*Requires Google Gemini API key - Natural language conversations and smart recommendations*
 
 ![AI Chat Mode](demo_photo_API.jpg)
 
@@ -28,7 +28,7 @@ A comprehensive web scraper and AI chatbot for extracting and querying coupon co
 - 🔍 **Semantic search** - Understands meaning, not just keywords
 - 💡 **Smart recommendations** - AI-powered suggestions
 - 🎯 **Complex queries** - Handle multi-part questions
-- ⚠️ **Requires OpenAI API key** with sufficient credits
+- ⚠️ **Requires Google Gemini API key** with sufficient credits
 
 ## 🚀 Features
 
@@ -36,10 +36,10 @@ A comprehensive web scraper and AI chatbot for extracting and querying coupon co
 - **Category Discovery**: Automatically discovers all available categories from SimplyCodes.com
 - **3-Level Hierarchy**: Organizes data into hierarchical categories (Level 1 → Level 2 → Level 3 → Coupons)
 - **Single Category Scraping**: Scrape coupons from a specific category
-- **Comprehensive Scraping**: Discover categories + scrape all + create tree structure
+- **Comprehensive Scraping**: Load categories + scrape all + enhance with hierarchy
 - **Anti-Detection**: Built-in stealth features to avoid blocking
 - **Retry Logic**: Automatic retry with exponential backoff
-- **Data Export**: Saves results to JSON files in both flat and tree structures
+- **Data Export**: Saves results to JSON files with enhanced hierarchy tracking
 
 ### **AI Chatbot**
 - **Dual Mode Interface**: Basic search (free) and AI chat (OpenAI-powered)
@@ -53,7 +53,7 @@ A comprehensive web scraper and AI chatbot for extracting and querying coupon co
 **✅ Successfully Discovered:**
 - **19 Main Categories** (Level 1)
 - **2510 Total Categories** (including subcategories)
-- **1082 Level 3 Subcategories**
+- **1283 Level 2 & 3 Subcategories**
 - **Complete AI Categories**: AI Devices, AI Detection, AI Hardware, AI Content Creation, etc.
 
 **Example Categories:**
@@ -97,15 +97,15 @@ Discovers all available categories and creates a tree structure, saving to:
 - `data/discovered_categories.json` - All discovered categories (flat list)
 - `data/category_tree.json` - Hierarchical tree structure
 
-#### Comprehensive Tree Scraping
+#### Comprehensive Coupon Scraping
 ```bash
 # Scrape all categories
-python main.py comprehensive_tree
+python main.py comprehensive_coupons
 
 # Scrape only first 10 categories
-python main.py comprehensive_tree 10
+python main.py comprehensive_coupons 10
 ```
-Performs complete workflow: Discover → Scrape → Create tree structure.
+Performs complete workflow: Load categories → Scrape all → Enhance with hierarchy.
 
 ### **2. Chatbot Usage**
 
@@ -116,10 +116,10 @@ python api_basic.py
 ```
 Provides basic search functionality without OpenAI API requirements.
 
-#### Start AI Chatbot (Requires OpenAI API)
+#### Start AI Chatbot (Requires Google Gemini API)
 ```bash
 cd llm
-python api.py
+python api_gemini.py
 ```
 Provides full AI-powered conversational interface.
 
@@ -139,17 +139,18 @@ coupon_companion/
 ├── validators/
 │   └── coupon_validator.py          # Coupon validation logic
 ├── llm/
-│   ├── assistant.py                 # LangChain AI assistant
-│   ├── api.py                       # Full AI API (OpenAI)
-│   ├── api_basic.py                 # Basic API (free)
+│   ├── assistant_gemini.py          # Gemini LangChain AI assistant
+│   ├── assistant_openai.py          # OpenAI LangChain AI assistant (alternative)
+│   ├── api_gemini.py                # Full AI API (Gemini)
+│   ├── api_openai.py                # Full AI API (OpenAI) (alternative)
 │   ├── web_interface.html           # Web UI
 │   ├── test_assistant.py            # AI assistant tests
 │   └── test_basic.py                # Basic API tests
 ├── data/
 │   ├── discovered_categories.json   # Discovered categories (flat)
 │   ├── extracted_coupons.json       # Single category results
-│   ├── comprehensive_coupons.json   # All categories (flat)
-│   └── category_tree.json          # All categories (tree)
+│   ├── comprehensive_coupons.json   # All categories with hierarchy (flat)
+│   └── category_tree.json          # Clean tree structure (no coupons)
 ├── requirements.txt                 # Python dependencies
 ├── .env                            # Environment variables (API keys)
 └── demo_photo.jpg                  # Project demo screenshot
@@ -164,7 +165,7 @@ coupon_companion/
 - `GET /brands` - List all brands
 - `GET /stats` - Get statistics
 
-### **AI API (OpenAI)**
+### **AI API (Gemini)**
 - `POST /chat` - AI-powered conversational chat
 - `GET /search?query=beauty` - Semantic search
 - `GET /categories` - List all categories
@@ -186,28 +187,19 @@ coupon_companion/
 ]
 ```
 
-### **Tree Structure Output**
+### **Enhanced Coupon Output**
 ```json
 {
-  "artificial-intelligence": {
-    "category_name": "Artificial Intelligence",
-    "category_path": "/category/artificial-intelligence",
-    "subcategories": {
-      "ai-content-creation": {
-        "subcategories_name": "AI Content Creation",
-        "subcategories_path": "/category/artificial-intelligence/ai-content-creation",
-        "url": "https://simplycodes.com/category/artificial-intelligence/ai-content-creation",
-        "coupons": [
-          {
-            "brand": "Taplio",
-            "code": "TAPLIO50",
-            "description": "50% off",
-            "button_index": 0
-          }
-        ]
-      }
-    }
-  }
+  "brand": "Taplio",
+  "code": "TAPLIO50",
+  "description": "50% off",
+  "button_index": 0,
+  "category": "AI Content Creation",
+  "category_url": "https://simplycodes.com/category/artificial-intelligence/ai-content-creation",
+  "category_path": "/category/artificial-intelligence/ai-content-creation",
+  "level1": "artificial-intelligence",
+  "level2": "ai-content-creation",
+  "level3": null
 }
 ```
 
@@ -240,9 +232,9 @@ cd llm
 python api_basic.py
 
 # AI mode (requires OpenAI API key)
-# First, set your OpenAI API key in .env file
-echo "OPENAI_API_KEY=your-api-key-here" > .env
-python api.py
+# First, set your Google Gemini API key in .env file
+echo "GOOGLE_API_KEY=your-gemini-api-key-here" > .env
+python llm/api_gemini.py
 ```
 
 ### **4. Access Web Interface**
@@ -253,7 +245,7 @@ Open `llm/web_interface.html` in your browser and start chatting!
 ### **Environment Variables**
 Create a `.env` file in the project root:
 ```env
-OPENAI_API_KEY=your-openai-api-key-here
+GOOGLE_API_KEY=your-gemini-api-key-here
 ```
 
 ### **Scraper Settings**
@@ -272,7 +264,7 @@ OPENAI_API_KEY=your-openai-api-key-here
 
 **Current Data Coverage:**
 - ✅ **2,510 Total Categories** discovered
-- ✅ **1,082 Level 3 Subcategories** found
+- ✅ **1,283 Level 2 & 3 Subcategories** found
 - ✅ **19 Main Categories** with complete hierarchy
 - ✅ **All AI Categories** including previously missing ones
 
@@ -291,14 +283,14 @@ OPENAI_API_KEY=your-openai-api-key-here
 - ✅ Perfect for quick coupon lookups
 - ⚡ Instant response time
 
-### **AI Chat Mode (OpenAI)** - See demo above ↑
+### **AI Chat Mode (Gemini)** - See demo above ↑
 - 🤖 Natural language queries
 - 🧠 Conversational memory
 - 🔍 Semantic search capabilities
 - 💡 Smart recommendations
 - 🎯 Complex multi-part questions
-- ⚠️ Requires OpenAI API key with credits
-- 💰 Incurs OpenAI usage costs
+- ⚠️ Requires Google Gemini API key with credits
+- 💰 Incurs Google Gemini usage costs
 
 ## 🐛 Troubleshooting
 
@@ -308,13 +300,13 @@ OPENAI_API_KEY=your-openai-api-key-here
 - The scraper includes automatic retry logic
 - If persistent, try running with longer delays
 
-**2. OpenAI API Errors**
+**2. Google Gemini API Errors**
 - Check your API key in `.env` file
 - Ensure you have sufficient credits
-- Try using `gpt-3.5-turbo-0125` for cheaper usage
+- Try using `gemini-1.5-flash` for cheaper usage
 
 **3. Web Interface Not Working**
-- Ensure API server is running (`python api_basic.py` or `python api.py`)
+- Ensure API server is running (`python llm/api_gemini.py`)
 - Check browser console for CORS errors
 - Verify API URL in `web_interface.html`
 
@@ -328,9 +320,9 @@ OPENAI_API_KEY=your-openai-api-key-here
 - All scraping is done in headless mode by default for better performance
 - Results are automatically saved to JSON files in the `data/` directory
 - The scraper handles 403 errors and other blocking attempts gracefully
-- Tree structure provides better organization for large datasets
-- You can create tree structure from existing data without re-scraping
-- The chatbot supports both free basic search and paid AI chat modes
+- Enhanced coupon data provides complete hierarchy tracking
+- Clean tree structure for navigation, enhanced coupons for search
+- The chatbot supports both free basic search and paid AI chat modes (Gemini-powered)
 
 ## 🔄 Recent Updates
 
@@ -338,6 +330,9 @@ OPENAI_API_KEY=your-openai-api-key-here
 - ✅ Fixed level 3 category discovery
 - ✅ Enhanced selectors to find all level 2 categories (with and without level 3)
 - ✅ Improved tree organization with proper 3-level hierarchy
+- ✅ Renamed `comprehensive_tree` to `comprehensive_coupons` for clarity
+- ✅ Enhanced coupon data with clean hierarchy tracking (`level1`, `level2`, `level3`)
+- ✅ Separated clean tree structure from coupon data
 - ✅ Added dual-mode chatbot (basic + AI)
 - ✅ Created web interface with mode toggle
 - ✅ Implemented FastAPI backend for both modes

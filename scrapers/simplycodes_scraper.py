@@ -533,8 +533,7 @@ class SimplyCodesScraper:
                         'subcategories_path': category['category_path'],
                         'url': category['url'],
                         'level': 2,
-                        'parent_category': category.get('parent_category', ''),
-                        'coupons': []
+                        'parent_category': category.get('parent_category', '')
                     }
                 
             elif level == 3:
@@ -560,8 +559,7 @@ class SimplyCodesScraper:
                             'subcategories_path': f"/category/{level1}/{level2}",
                             'url': f"https://simplycodes.com/category/{level1}/{level2}",
                             'level': 2,
-                            'parent_category': level1,
-                            'coupons': []
+                            'parent_category': level1
                         }
                     
                     # Add level 3 sub-subcategory
@@ -571,47 +569,11 @@ class SimplyCodesScraper:
                         'subcategories_path': category['category_path'],
                         'url': category['url'],
                         'level': 3,
-                        'parent_category': f"{level1} > {level2}",
-                        'coupons': []
+                        'parent_category': f"{level1} > {level2}"
                     }
         
-        # Now organize coupons under their respective categories
-        for coupon in coupons:
-            # Extract category information from coupon
-            category_path = coupon.get('category_path', '')
-            category_level = coupon.get('category_level', 2)
-            
-            if category_level == 2:
-                # Coupon belongs to level 2 category
-                path_parts = category_path.split('/')
-                if len(path_parts) >= 4:
-                    level1 = path_parts[2]
-                    level2 = path_parts[3]
-                    
-                    if level1 in tree and level2 in tree[level1]['subcategories']:
-                        coupon_data = {
-                            'brand': coupon['brand'],
-                            'code': coupon['code'],
-                            'description': coupon['description'],
-                            'button_index': coupon['button_index']
-                        }
-                        tree[level1]['subcategories'][level2]['coupons'].append(coupon_data)
-                        
-            elif category_level == 3:
-                # Coupon belongs to level 3 category
-                level1 = coupon.get('level1', '')
-                level2 = coupon.get('level2', '')
-                level3 = coupon.get('level3', '')
-                
-                if level1 in tree and level2 in tree[level1]['subcategories']:
-                    if 'subcategories' in tree[level1]['subcategories'][level2] and level3 in tree[level1]['subcategories'][level2]['subcategories']:
-                        coupon_data = {
-                            'brand': coupon['brand'],
-                            'code': coupon['code'],
-                            'description': coupon['description'],
-                            'button_index': coupon['button_index']
-                        }
-                        tree[level1]['subcategories'][level2]['subcategories'][level3]['coupons'].append(coupon_data)
+        # Note: Coupon data is not included in the tree structure
+        # Coupons are stored separately in comprehensive_coupons.json
         
         return tree
 

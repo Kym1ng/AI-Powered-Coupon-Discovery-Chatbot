@@ -256,7 +256,7 @@
                     🔍 Basic Search (Free)
                 </button>
                 <button id="aiModeBtn" class="mode-btn" onclick="switchMode('ai')">
-                    🤖 AI Chat (OpenAI)
+                    🤖 AI Chat (Gemini)
                 </button>
             </div>
         </div>
@@ -284,7 +284,7 @@
     </div>
 
     <script>
-        const API_BASE_URL = 'http://localhost:8000';
+        const API_BASE_URL = 'http://localhost:8001';
         const chatMessages = document.getElementById('chatMessages');
         const messageInput = document.getElementById('messageInput');
         const sendButton = document.getElementById('sendButton');
@@ -327,7 +327,7 @@
                 welcomeMessage.querySelector('.message-content').innerHTML = `
                     👋 Hi! I'm your AI coupon assistant. I can help you find the best deals and coupons from SimplyCodes.com.
                     <br><br>
-                    <strong>🤖 Current Mode: AI Chat (Requires OpenAI API)</strong>
+                    <strong>🤖 Current Mode: AI Chat (Gemini - FREE!)</strong>
                     <br>• Natural language: "What's the best discount for Taplio?"
                     <br>• Complex questions: "Show me beauty coupons under $20"
                     <br>• Conversational: "I need help finding food delivery deals"
@@ -357,9 +357,10 @@
         }
 
         function formatCouponResponse(response) {
-            let html = response.answer;
+            // Handle both OpenAI and Gemini response formats
+            let html = response.answer || response.response || 'No response received';
             
-            // Add source documents if available
+            // Add source documents if available (OpenAI format)
             if (response.source_documents && response.source_documents.length > 0) {
                 html += '<br><br><strong>Sources:</strong><br>';
                 response.source_documents.forEach((doc, index) => {
@@ -368,6 +369,11 @@
                         <p>${doc.content}</p>
                     </div>`;
                 });
+            }
+            
+            // Add model info for Gemini
+            if (response.model && response.api_provider) {
+                html += `<br><br><small><em>Powered by ${response.api_provider} (${response.model})</em></small>`;
             }
             
             return html;
@@ -431,9 +437,11 @@
                         }
                         
                         const data = await response.json();
-                        if (data.coupons && data.coupons.length > 0) {
-                            let resultHtml = `Found ${data.total} coupons for "${message}":<br><br>`;
-                            data.coupons.slice(0, 5).forEach((coupon, index) => {
+                        // Handle both OpenAI (coupons) and Gemini (results) formats
+                        const coupons = data.coupons || data.results || [];
+                        if (coupons.length > 0) {
+                            let resultHtml = `Found ${data.total || data.count || coupons.length} coupons for "${message}":<br><br>`;
+                            coupons.slice(0, 5).forEach((coupon, index) => {
                                 resultHtml += `<div class="coupon-card">
                                     <h4>${coupon.brand}</h4>
                                     <div class="coupon-code">Code: ${coupon.code}</div>
@@ -441,8 +449,9 @@
                                     <small>Category: ${coupon.category} > ${coupon.subcategory}</small>
                                 </div>`;
                             });
-                            if (data.total > 5) {
-                                resultHtml += `<br><em>... and ${data.total - 5} more coupons</em>`;
+                            const total = data.total || data.count || coupons.length;
+                            if (total > 5) {
+                                resultHtml += `<br><em>... and ${total - 5} more coupons</em>`;
                             }
                             addMessage(resultHtml);
                         } else {
@@ -468,7 +477,7 @@
                 }
             } catch (error) {
                 console.error('Error:', error);
-                addMessage(`❌ Error: ${error.message}. Make sure the API server is running on ${API_BASE_URL}`, false, true);
+                addMessage(`❌ Error: ${error.message}. Make sure the Gemini API server is running on ${API_BASE_URL}`, false, true);
             } finally {
                 // Re-enable input
                 messageInput.disabled = false;
